@@ -2,13 +2,23 @@ import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import db from '@/db/database';
 import { checkUserExists } from '@/utils/auth';
+import { verifyEmail } from '@/utils/emailVerification';
 
 export async function POST(request: Request) {
   const body = await request.json();
   const { email, password, firstName, lastName, phoneNumber, address, telegramChatId } = body;
 
   try {
-    // Check if user exists before attempting registration
+    // Verify email first
+    const emailVerification = await verifyEmail(email);
+    if (!emailVerification.valid) {
+      return NextResponse.json({ 
+        error: "Invalid email address",
+        details: emailVerification.details 
+      }, { status: 400 });
+    }
+
+    // Check if user exists
     const exists = await checkUserExists(email);
     if (exists) {
       return NextResponse.json({ 

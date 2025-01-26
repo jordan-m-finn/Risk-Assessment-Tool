@@ -24,13 +24,6 @@ export async function POST(req: Request) {
       )
     }
 
-    
-    // calculate weighted average and hard code it
-    // Upon entering an address to assess risk, display "in the past 30 days, the average risk score for this location was _ out of _ with quantity of detections being: # masked personell, # fence boundary crossings, etc.
-    // Change IP address field in CCTV camera info to Custom Prompt and input only one customPrompt and then send it to the SQLite database in a new table and every time you send a new eelement to that table replace the table. Basically it shouldn't append things to the table.
-    // Make the terms and condition/privacy policy actually display
-    // set up the fakeyou api integration
-
     let finalMessage = riskMessage + message;
 
     const completion = await openai.chat.completions.create({

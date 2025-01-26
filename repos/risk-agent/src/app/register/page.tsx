@@ -23,7 +23,7 @@ export default function Register() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setError("") // Fix: clear error before submission
+    setError("")
 
     try {
       // Verify address first
@@ -57,8 +57,8 @@ export default function Register() {
         throw new Error(data.error || "Registration failed")
       }
 
-      const isUCIEmail = formData.email.toLowerCase().endsWith('@uci.edu') // Fix: add toLowerCase()
-      router.push(isUCIEmail ? '/search' : '/camera-setup')
+      const isUCIEmail = formData.email.toLowerCase().endsWith('@uci.edu')
+      router.push(isUCIEmail ? '/search' : '/user-dashboard')  // Updated routing
 
     } catch (err: any) {
       setError(err.message)

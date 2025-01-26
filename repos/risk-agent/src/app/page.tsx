@@ -8,7 +8,7 @@ export default function Home() {
       <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center">
           <h1 className="text-4xl font-bold text-[#003087] sm:text-5xl md:text-6xl">
-            Risk Assessment Tool
+            Risk Assessment AI Tool
           </h1>
           <p className="mt-3 max-w-md mx-auto text-base text-gray-600 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
             Evaluate location-based risks efficiently with our advanced assessment platform.

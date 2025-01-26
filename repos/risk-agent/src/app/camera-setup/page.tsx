@@ -7,7 +7,8 @@ export default function CameraSetup() {
   const router = useRouter()
   const [cameraData, setCameraData] = useState({
     cameraType: "",
-    location: "",
+    position: "",
+    customPrompt: "",
   })
   const [error, setError] = useState("")
 
@@ -54,14 +55,28 @@ export default function CameraSetup() {
               </div>
 
               <div>
-                <label htmlFor="location" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Location
+                <label htmlFor="position" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Position
                 </label>
                 <input
                   type="text"
-                  id="location"
-                  value={cameraData.location}
-                  onChange={(e) => setCameraData({ ...cameraData, location: e.target.value })}
+                  id="position"
+                  value={cameraData.position}
+                  onChange={(e) => setCameraData({ ...cameraData, position: e.target.value })}
+                  className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                  required
+                />
+              </div>
+
+              <div>
+                <label htmlFor="custom prompt" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Custom Prompt
+                </label>
+                <input
+                  type="text"
+                  id="customPrompt"
+                  value={cameraData.customPrompt}
+                  onChange={(e) => setCameraData({ ...cameraData, customPrompt: e.target.value })}
                   className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
                   required
                 />

@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #003087;
+  --primary-hover: #002266;
+  --primary-light: #1a4fab;
+  --secondary: #2c5282;
+  --secondary-hover: #1a365d;
+  --background-light: #f5f7fa;
+  --background-dark: #1a2433;
+  --card-light: #ffffff;
+  --card-dark: #243447;
+  --input-dark: #1e293b;
+}
+
+@layer base {
+  html {
+    @apply transition-colors duration-200;
+  }
+  
+  body {
+    @apply bg-[#f5f7fa] dark:bg-[#1a2433] transition-colors duration-200;
+  }
+}
+
+@layer components {
+  .input-field {
+    @apply mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-[#1e293b] dark:text-white shadow-sm focus:border-[#003087] focus:ring focus:ring-[#003087] focus:ring-opacity-50;
+  }
+
+  .primary-button {
+    @apply w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#003087] hover:bg-[#002266] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#003087];
+  }
+
+  .secondary-button {
+    @apply px-4 py-2 text-sm font-medium text-white bg-[#2c5282] hover:bg-[#1a365d] rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#2c5282];
+  }
+}

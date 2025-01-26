@@ -6,11 +6,10 @@ import { useRouter } from "next/navigation"
 export default function CameraSetup() {
   const router = useRouter()
   const [cameraData, setCameraData] = useState({
-    cameraType: "",
+    cameraURL: "",  // This should match the field name in our API
     position: "",
     customPrompt: "",
   })
-  const [error, setError] = useState("")
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -20,18 +19,24 @@ export default function CameraSetup() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(cameraData),
+        body: JSON.stringify({
+          cameraURL: cameraData.cameraURL,    // Make sure field names match
+          position: cameraData.position,
+          customPrompt: cameraData.customPrompt,
+        }),
       })
 
       if (!response.ok) {
-        throw new Error("Failed to save camera information")
+        const error = await response.json()
+        throw new Error(error.error || "Failed to save camera information")
       }
 
-      router.push("/employee-dashboard")
+      router.push("/user-dashboard")
     } catch (err: any) {
       setError(err.message)
     }
   }
+  const [error, setError] = useState("")
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 py-6 flex flex-col justify-center sm:py-12">
@@ -41,14 +46,14 @@ export default function CameraSetup() {
             <h1 className="text-2xl font-semibold mb-6 dark:text-white">Camera Setup</h1>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label htmlFor="cameraType" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Camera Type
+                <label htmlFor="cameraURL" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Camera URL
                 </label>
                 <input
                   type="text"
-                  id="cameraType"
-                  value={cameraData.cameraType}
-                  onChange={(e) => setCameraData({ ...cameraData, cameraType: e.target.value })}
+                  id="cameraURL"
+                  value={cameraData.cameraURL}
+                  onChange={(e) => setCameraData({ ...cameraData, cameraURL: e.target.value })}
                   className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
                   required
                 />

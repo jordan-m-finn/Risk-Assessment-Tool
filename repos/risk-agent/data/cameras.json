@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1737874968908,
+    "camera_url": "adfjklsfj;sajf;ljadfsl;",
+    "position": "Front Door",
+    "custom_prompt": "mailman",
+    "nickname": "Front",
+    "created_at": "2025-01-26T07:02:48.908Z"
+  },
+  {
+    "id": 1737874842708,
+    "camera_url": "dkfsjlska;dfj;sadlkjfsal;kd",
+    "position": "Back Door",
+    "custom_prompt": "dog pooping",
+    "nickname": "Rear",
+    "created_at": "2025-01-26T07:00:42.708Z"
+  }
+]

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@sqlitecloud/drivers": "^1.0.354",
     "axios": "^1.7.9",
     "bcryptjs": "^2.4.3",
     "class-variance-authority": "^0.7.1",
@@ -21,15 +22,18 @@
     "openai": "^4.80.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "sqlite": "^5.1.1",
     "sqlite3": "^5.1.7",
     "tailwind-merge": "^2.6.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "ws": "^8.18.0"
   },
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.12",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/ws": "^8.5.14",
     "drizzle-kit": "^0.30.2",
     "postcss": "^8",
     "prisma": "^5.10.2",

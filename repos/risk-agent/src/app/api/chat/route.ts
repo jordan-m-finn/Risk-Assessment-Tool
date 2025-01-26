@@ -1,13 +1,15 @@
 import { NextResponse } from 'next/server'
 import OpenAI from 'openai'
 
-if (!process.env.OPENAI_API_KEY) {
-  throw new Error('Missing OpenAI API Key')
+if (!process.env.OPENAI_API_KEY || !process.env.SQLITE_API_KEY) {
+  throw new Error('Missing required API keys')
 }
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 })
+
+const sqliteApiKey = process.env.SQLITE_API_KEY
 
 export async function POST(req: Request) {
   try {
@@ -22,9 +24,12 @@ export async function POST(req: Request) {
       )
     }
 
-    // find SQLite API key
+    
     // calculate weighted average and hard code it
-    // Input only one customPrompt and then send it to the SQLite database in a new table and every time you send a new eelement to that table replace the table. Basically it shouldn't append things to the table.
+    // Upon entering an address to assess risk, display "in the past 30 days, the average risk score for this location was _ out of _ with quantity of detections being: # masked personell, # fence boundary crossings, etc.
+    // Change IP address field in CCTV camera info to Custom Prompt and input only one customPrompt and then send it to the SQLite database in a new table and every time you send a new eelement to that table replace the table. Basically it shouldn't append things to the table.
+    // Make the terms and condition/privacy policy actually display
+    // set up the fakeyou api integration
 
     let finalMessage = riskMessage + message;
 

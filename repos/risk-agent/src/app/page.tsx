@@ -2,44 +2,52 @@ import Link from "next/link"
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-800">
-      <main className="container mx-auto px-4 py-16">
-        <h1 className="text-5xl font-bold text-center mb-8 dark:text-white">Welcome to Risk Assessment Engine</h1>
-        <p className="text-xl text-center mb-12 max-w-2xl mx-auto dark:text-gray-300">
-          Revolutionize your security with AI-powered risk assessment. Our cutting-edge platform analyzes CCTV feeds and
-          security sources to provide real-time insights and protect what matters most.
-        </p>
-        <div className="flex justify-center">
-          <Link
-            href="/login"
-            className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg text-lg transition duration-300"
-          >
-            Get Started
-          </Link>
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 py-6 flex flex-col items-center">
+      {/* Hero Section */}
+      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-white sm:text-5xl md:text-6xl">
+            Risk Assessment Tool
+          </h1>
+          <p className="mt-3 max-w-md mx-auto text-base text-gray-500 dark:text-gray-300 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+            Evaluate location-based risks efficiently with our advanced assessment platform.
+          </p>
+          <div className="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
+            <Link
+              href="/register"
+              className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
+            >
+              Get Started
+            </Link>
+          </div>
         </div>
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+      </div>
+
+      {/* Features Grid */}
+      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           <FeatureCard
-            title="AI-Powered Analysis"
-            description="Our advanced AI algorithms analyze video feeds in real-time, detecting potential risks and anomalies."
+            title="Location Analysis"
+            description="Analyze potential risks based on geographical location and historical data."
           />
           <FeatureCard
-            title="Customizable Alerts"
-            description="Set up personalized alerts and receive notifications via Telegram for immediate response to potential threats."
+            title="Real-time Updates"
+            description="Receive instant notifications about risk changes in your monitored areas."
           />
           <FeatureCard
-            title="Comprehensive Reporting"
-            description="Generate detailed risk assessment reports to improve your security strategies and resource allocation."
+            title="Comprehensive Reports"
+            description="Generate detailed risk assessment reports for better decision making."
           />
         </div>
-      </main>
+      </div>
     </div>
   )
 }
 
 function FeatureCard({ title, description }: { title: string; description: string }) {
   return (
-    <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
-      <h2 className="text-2xl font-semibold mb-4 dark:text-white">{title}</h2>
+    <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+      <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">{title}</h2>
       <p className="text-gray-600 dark:text-gray-300">{description}</p>
     </div>
   )

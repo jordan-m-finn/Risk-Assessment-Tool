@@ -10,6 +10,11 @@ export const metadata = {
   description: "Determining risks through AI and image classification by assessing available CCTV and security sources",
 }
 
+import Navigation from '@/components/Navigation'
+import { ThemeProvider } from '@/context/ThemeContext'
+import './globals.css'
+import { AuthProvider } from '@/context/AuthContext'
+
 export default function RootLayout({
   children,
 }: {
@@ -17,21 +22,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} dark:bg-gray-900 dark:text-white`}>
-        <nav className="bg-indigo-600 dark:bg-indigo-800 text-white p-4">
-          <div className="container mx-auto flex justify-between items-center">
-            <Link href="/" className="text-2xl font-bold">
-              Risk Assessment Engine
-            </Link>
-            <div className="flex items-center space-x-4">
-              <ThemeToggle />
-              <Link href="/login" className="hover:underline">
-                Log In
-              </Link>
-            </div>
-          </div>
-        </nav>
-        {children}
+      <body>
+        <AuthProvider>
+          <ThemeProvider>
+            <Navigation />
+            <main>{children}</main>
+          </ThemeProvider>
+        </AuthProvider>
       </body>
     </html>
   )

@@ -11,10 +11,10 @@ export const metadata = {
 }
 
 import Navigation from '@/components/Navigation'
-import { ThemeProvider } from '@/context/ThemeContext'
 import './globals.css'
 import { AuthProvider } from '@/context/AuthContext'
 import ChatWidget from '@/components/ChatWidget/ChatWidget'
+import { ThemeProvider } from '@/components/ThemeProvider'
 
 export default function RootLayout({
   children,
@@ -23,11 +23,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className={inter.className}>
         <AuthProvider>
           <ThemeProvider>
             <Navigation />
-            <main>{children}</main>
+            <main>
+              {children}
+            </main>
             <ChatWidget />
           </ThemeProvider>
         </AuthProvider>
@@ -35,4 +37,11 @@ export default function RootLayout({
     </html>
   )
 }
+// Add this to your head section
+<link 
+  rel="stylesheet" 
+  href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+  crossOrigin=""
+/>
 
